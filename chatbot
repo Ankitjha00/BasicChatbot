@@ -1,0 +1,25 @@
+# import openai
+import  google.generativeai as genai
+
+# Replace with your OpenAI API key
+# openai.api_key = "sk-l1XVPWbEuKj_2S3laZ8yIZm6r30cBbBPLk3iuSmFoOT3BlbkFJWBtFmVjA-dUgvaTPc09QWmQdj1LBHMJerGka415BEA"
+# AIzaSyBHxv3zOip4Gzi_mZcBnHjR5Jtcl_rUG9w
+
+genai.configure(api_key="AIzaSyBHxv3zOip4Gzi_mZcBnHjR5Jtcl_rUG9w")
+def chat_with_gpt(prompt):
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(prompt)
+    return (response.text)
+
+if __name__ == "__main__":
+    print("Chatbot: Hello! Type 'quit' to end the conversation.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ["quit", "exit", "bye"]:
+            print("Chatbot: Goodbye!")
+            break
+
+        response = chat_with_gpt(user_input)
+        
+        print("Response from ai: ",response)
+        # print("Chatbot:", response)
